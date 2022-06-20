@@ -1,0 +1,564 @@
+/* ===== Google Font Import - Poppins ===== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.4s ease;
+}
+
+/* ===== Colours ===== */
+:root {
+  --body-color: #e4e9f7;
+  --nav-color: #4070f4;
+  --side-nav: #010718;
+  --text-color: #fff;
+  --search-bar: #f2f2f2;
+  --search-text: #010718;
+  --tabs-button: #1abc9c;
+  --content-color: #000;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--body-color);
+}
+
+body.dark {
+  --body-color: #18191a;
+  --nav-color: #242526;
+  --side-nav: #242526;
+  --text-color: #ccc;
+  --search-bar: #242526;
+  --tabs-button: #1abc9cc4;
+  --content-color: #fff;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: var(--tabs-button) !important;
+}
+.logo a:link {
+  font-weight: bolder;
+  letter-spacing: 0.3rem;
+  font-size: 5rem;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  background-color: var(--nav-color);
+  z-index: 2000;
+}
+
+body.dark nav {
+  border: 1px solid #393838;
+}
+
+nav .nav-bar {
+  position: relative;
+  height: 100%;
+  max-width: 1000px;
+  width: 100%;
+  background-color: var(--nav-color);
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .nav-bar .sidebarOpen {
+  color: var(--text-color);
+  font-size: 20px;
+  padding: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+nav .nav-bar .logo a {
+  font-size: 25px;
+  /* font-weight: 500; */
+  color: var(--text-color);
+  text-decoration: none;
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  overflow: hidden;
+}
+.menu .logo-toggle {
+  display: none;
+}
+
+.nav-bar .nav-links-boxicon {
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar .nav-links-boxicon li {
+  margin: 0 5px;
+  list-style: none;
+}
+
+.nav-links-boxicon li a {
+  position: relative;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nav-links-boxicon li a::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background-color: var(--text-color);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.nav-links-boxicon li:hover a::before {
+  opacity: 1;
+}
+
+.nav-bar .darkLight-searchBox {
+  display: flex;
+  align-items: center;
+}
+
+.darkLight-searchBox .dark-light,
+.darkLight-searchBox .searchToggle {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+}
+
+.dark-light i,
+.searchToggle i {
+  position: absolute;
+  color: var(--text-color);
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dark-light i.sun {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dark-light.active i.sun {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dark-light.active i.moon {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.searchToggle i.cancel {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.searchToggle.active i.cancel {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.searchToggle.active i.search {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.searchBox {
+  position: relative;
+}
+
+.searchBox .search-field {
+  position: absolute;
+  bottom: -85px;
+  right: 5px;
+  height: 50px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  background-color: var(--nav-color);
+  padding: 3px;
+  border-radius: 6px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.searchToggle.active ~ .search-field {
+  bottom: -74px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.search-field::before {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: -4px;
+  height: 12px;
+  width: 12px;
+  background-color: var(--nav-color);
+  transform: rotate(-45deg);
+  z-index: -1;
+}
+
+.search-field input {
+  height: 100%;
+  width: 100%;
+  padding: 0 45px 0 15px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--search-text);
+  background-color: var(--search-bar);
+}
+
+body.dark .search-field input {
+  color: var(--text-color);
+}
+
+.search-field i {
+  position: absolute;
+  color: var(--nav-color);
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+body.dark .search-field i {
+  color: var(--text-color);
+}
+
+@media (max-width: 850px) {
+  .menu,
+  nav .nav-bar .sidebarOpen {
+    display: block;
+  }
+
+  .menu {
+    position: fixed;
+    height: 100%;
+    width: 320px;
+    left: -100%;
+    top: 0;
+    padding: 20px;
+    background-color: var(--side-nav);
+    z-index: 100;
+    transition: all 0.4s ease;
+  }
+
+  nav.active .menu {
+    left: -0%;
+  }
+
+  nav.active .nav-bar .navLogo a {
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .menu .logo-toggle {
+    display: block;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-toggle .siderbarClose {
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .nav-bar .nav-links-boxicon {
+    flex-direction: column;
+    padding-top: 30px;
+  }
+
+  .nav-links-boxicon li a {
+    display: block;
+    margin-top: 20px;
+  }
+}
+
+/* !left button  html*/
+
+/* for html css js  */
+.color--toggle {
+  color: var(--content-color);
+}
+/*  !starts html part from here */
+.hero-container {
+  width: 100%;
+  height: fit-content;
+  background-color: var(--body-color);
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+.hero--tab {
+  width: 100%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: scroll;
+}
+.hero--tab button {
+  display: block;
+  padding: 25px 15px;
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+.hero--tab button:hover {
+  background-color: var(--tabs-button);
+}
+.hero--tab button.tabsButtonActive {
+  background-color: var(--tabs-button);
+  color: var(--text-color);
+}
+.tabsButton2 {
+  padding: 2rem;
+  background-color: var(--body-color);
+}
+.tabsButton {
+  color: var(--content-color);
+  background-color: var(--body-color);
+}
+/* footer {
+  padding: 15rem;
+  background-color: #006400;
+} */
+::placeholder {
+  color: var(--text-color);
+}
+/* !left button css  */
+
+.hero-containercss {
+  width: 100%;
+  height: fit-content;
+  background-color: var(--body-color);
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+.hero--tabcss {
+  width: 100%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: scroll;
+}
+.hero--tabcss button {
+  display: block;
+  padding: 35px 15px;
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--body-color);
+  color: var(--content-color);
+  transition: 0.3s;
+  font-size: 15px;
+}
+.hero--tabcss button:hover {
+  background-color: var(--tabs-button);
+}
+.hero--tabcss button.leftTabsButtoncssActive {
+  background-color: var(--tabs-button);
+  color: var(--text-color);
+}
+.leftTabsButtoncsscss {
+  padding: 2rem;
+  background-color: var(--body-color);
+}
+/* footer {
+  padding: 15rem;
+  background-color: #006400;
+} */
+
+/* !left javascript style  */
+
+.hero-containerJavascript {
+  width: 100%;
+  height: fit-content;
+  background-color: var(--body-color);
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+.hero--tabJavascript {
+  width: 100%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: scroll;
+}
+.hero--tabJavascript button {
+  display: block;
+  padding: 35px 15px;
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+.hero--tabJavascript button:hover {
+  background-color: var(--tabs-button);
+}
+.hero--tabJavascript button.leftTabsButtonJavascriptActive {
+  background-color: var(--tabs-button);
+  color: var(--text-color);
+}
+.leftTabsButtonJavascriptJavascript {
+  padding: 2rem;
+  color: var(--content-color);
+  background-color: var(--body-color);
+}
+
+/*  ! footer  */
+.footer-container {
+  background-color: var(--body-color) !important;
+}
+.text--color {
+  color: var(--text-color) !important;
+}
+.btn:hover {
+  /* background-color: transparent !important; */
+  background-color: var(--text-color) !important;
+}
+/* ! profile icon  */
+.dropbtn {
+  background-color: #04aa6d;
+  color: white;
+  /* padding: 16px; */
+  /* font-size: 16px; */
+  border: none;
+  border-radius: 100%;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+  /* margin-top: 10px; */
+  /* clip-path: polygon(50% 0%, 100% 38%, 100% 100%, 0 100%, 0% 38%); */
+  /* padding: 10px; */
+}
+
+.dropdown-content a:link {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* .dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+} */
+
+/* copy to clipboard  */
+
+.text-boxes {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30px;
+  margin-bottom: 60px;
+}
+.text-boxes .text-box {
+  height: 380px;
+  max-width: 660px;
+  width: 100%;
+  margin: 55px 0;
+}
+.text-boxes .text-box .topic {
+  font-size: 18px;
+  font-weight: 600;
+  color: #265df2;
+  margin: 4px;
+}
+.text-boxes .text-box textarea {
+  height: 100%;
+  width: 100%;
+  padding: 30px;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  border: 1px solid #265df2;
+  border-radius: 8px;
+  background: #e7edfe;
+}
+.text-box textarea::-webkit-scrollbar {
+  display: none;
+}
+.text-boxes .text-box button {
+  height: 45px;
+  width: 155px;
+  color: #fff;
+  background: #265df2;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 400;
+  margin: 8px 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.text-boxes .text-box button:hover {
+  background: #0e4bf1;
+}
+@media (max-width: 400px) {
+  .text-boxes .text-box button {
+    width: 100%;
+  }
+}
