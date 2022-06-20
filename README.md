@@ -1,5 +1,7 @@
 # LEARN-HTML-CSS-JS
 My final year project, name of the project is LEARN HTML, CSS &amp; JS <br/>
+<p>How to run it</P><br/>
+# Download merged folder and extract it after that open it in any code editor such as VS Code or any others which you prefer, then open it with Live server and after this you will be able to see it on default browser.<br/><br/>
 <strong>Preview</strong><br/><br/>
 <div style="display: center">
   <strong>Home</strong><br/><br/>
